@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NS_API_PRIMARY_KEY: ${{ vars.NS_API_PRIMARY_KEY }}
-    
+      NS_API_USERNAME: ${{ vars.NS_API_USERNAME }}
+      NS_API_PASSWORD: ${{ vars.NS_API_PASSWORD }}
+      DROPBOX_ACCESS_TOKEN: ${{ vars.DROPBOX_ACCESS_TOKEN }}
+      NS_API_SECONDARY_KEY: ${{ vars.NS_API_SECONDARY_KEY }}
+
     steps:
     - name: Print env (for debug only)
       run: echo "Key is $NS_API_PRIMARY_KEY"
