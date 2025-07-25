@@ -2,7 +2,6 @@ import requests
 import json
 import os
 import dropbox
-import sys
 
 from requests.auth import HTTPBasicAuth
 from datetime import date, datetime, timedelta
@@ -58,10 +57,17 @@ def write_dbox(text):
     with open('train.txt', 'w') as file_out:
         file_out.write(text)
     
+    # Remove the file from Dropbox if it exists
+    try:
+        dbx.files_delete_v2('/train.txt')
+    except dropbox.exceptions.ApiError as e:
+        # Ignore error if file does not exist
+        if not (hasattr(e, 'error') and e.error.is_path_lookup() and e.error.get_path_lookup().is_not_found()):
+            raise
+
     with open('train.txt', 'rb') as file_in:
         dbx.files_upload(file_in.read(), '/train.txt', mode=dropbox.files.WriteMode.overwrite)
 
-print(sys.prefix)
 
 stations = get_stations()
 departure_code = find_station_code(stations, 'Eindhoven Centraal')
