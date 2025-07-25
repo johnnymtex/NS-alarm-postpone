@@ -9,6 +9,8 @@ jobs:
   run-script:
     environment: NS-alarm-postponer
     runs-on: ubuntu-latest
+    env:
+      NS_API_PRIMARY_KEY: ${{ vars.NS_API_PRIMARY_KEY }}
     
     steps:
     - name: Activate virtual environment
