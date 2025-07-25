@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-script:
-    env: NS-alarm-postponer
+    environment: NS-alarm-postponer
     runs-on: ubuntu-latest
     
     steps:
