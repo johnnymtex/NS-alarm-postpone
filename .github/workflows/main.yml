@@ -2,7 +2,7 @@ name: NS Alarm Postponer
 
 on:
   schedule:
-  - cron: "00 14 * * *"
+  - cron: "04 12 * * *"
   workflow_dispatch:
 
 jobs:
