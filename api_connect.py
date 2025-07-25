@@ -2,6 +2,7 @@ import requests
 import json
 import os
 import dropbox
+import sys
 
 from requests.auth import HTTPBasicAuth
 from datetime import date, datetime, timedelta
@@ -60,6 +61,7 @@ def write_dbox(text):
     with open('train.txt', 'rb') as file_in:
         dbx.files_upload(file_in.read(), '/train.txt', mode=dropbox.files.WriteMode.overwrite)
 
+print(sys.prefix)
 
 stations = get_stations()
 departure_code = find_station_code(stations, 'Eindhoven Centraal')
