@@ -13,6 +13,9 @@ jobs:
       NS_API_PRIMARY_KEY: ${{ vars.NS_API_PRIMARY_KEY }}
     
     steps:
+    - name: Print env (for debug only)
+      run: echo "Key is $NS_API_PRIMARY_KEY"
+      
     - name: Activate virtual environment
       run: echo PATH=${GITHUB_WORKSPACE}/.venv/bin:$PATH >> $GITHUB_ENV
       
